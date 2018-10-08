@@ -38,13 +38,11 @@ public class Exercise2 {
      */
     public static Vector union_final (Vector a, Vector b)
     {
-        Vector res = null;
-
         if (a==null || b==null) throw new IllegalArgumentException();
         else if (!a.isEmpty() && !b.isEmpty() && !a.get(0).getClass().equals(b.get(0).getClass())) throw new InputMismatchException();
         else {
 
-            res = new Vector();
+            Vector res = new Vector();
 
             for (int i = 0; i < a.size(); i++) {
 
@@ -55,8 +53,8 @@ public class Exercise2 {
 
                 if (!res.contains(b.get(i))) res.add(b.get(i));
             }
+            return res;
         }
-        return res;
     }
 
 }
