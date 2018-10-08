@@ -1,5 +1,6 @@
 package edu.udg.caes;
 
+import java.util.InputMismatchException;
 import java.util.Vector;
 
 import org.junit.jupiter.api.Test;
@@ -32,10 +33,7 @@ public class Exercise2Test {
         Vector b = new Vector();
         b.add(1);
 
-        Vector res = new Vector();
-
-        final Vector result = new Exercise2().union(a, b);
-        assertEquals(result, null);
+        assertThrows(IllegalArgumentException.class, () -> Exercise2.union_final(a,b));
     }
 
     @Test
@@ -44,20 +42,15 @@ public class Exercise2Test {
         a.add(1);
         Vector b = null;
 
-        Vector res = new Vector();
-
-        final Vector result = new Exercise2().union(a, b);
-        assertEquals(result, null);
+        assertThrows(IllegalArgumentException.class, () -> Exercise2.union_final(a,b));
     }
 
     @Test
     public void no2SameNulls() {
-        Vector a = new Vector();
-        Vector b = new Vector();
-        Vector res = new Vector();
+        Vector a = null;
+        Vector b = null;
 
-        final Vector result = new Exercise2().union(a, b);
-        assertEquals(result, null);
+        assertThrows(IllegalArgumentException.class, () -> Exercise2.union_final(a,b));
     }
 
     @Test
@@ -73,7 +66,7 @@ public class Exercise2Test {
         res.add(1);
         res.add(2);
 
-        final Vector result = new Exercise2().union(a, b);
+        final Vector result = new Exercise2().union_final(a, b);
         assertEquals(result, res);
     }
 
@@ -87,11 +80,6 @@ public class Exercise2Test {
         b.add(1);
         b.add(2);
 
-        Vector res = new Vector();
-        res.add(1);
-        res.add(2);
-
-        final Vector result = new Exercise2().union(a, b);
-        assertEquals(result, null);
+        assertThrows(InputMismatchException.class, () -> Exercise2.union_final(a,b));
     }
 }
